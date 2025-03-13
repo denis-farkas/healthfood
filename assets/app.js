@@ -1,10 +1,11 @@
 import { registerReactControllerComponents } from "@symfony/ux-react";
 
-import "bootstrap";
+import "./bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app.css";
 // Import Bootstrap JavaScript
 import "@popperjs/core";
+import "bootstrap"; // Add this line
 
 /*
  * Welcome to your app's main JavaScript file!
