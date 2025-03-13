@@ -54,10 +54,6 @@ class RegisterUserType extends AbstractType
             'invalid_message' => 'Les mots de passe ne correspondent pas',
             'mapped' => false,
         ])
-
-        ->add('phone', TextType::class, [
-            'label' => 'Téléphone', 'attr' => ['placeholder' => 'Entrez votre numéro']
-        ])
         ->add('submit', SubmitType::class, [
             'label' => 'Inscription', 'attr' => ['class' => 'btn-inscrire btn ']
         ])  

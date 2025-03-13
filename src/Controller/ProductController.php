@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,14 +18,26 @@ class ProductController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/products', name: 'app_product')]
-    public function index(EntityManagerInterface $entityManager): Response
+     #[Route('/products', name: 'app_product')]
+    public function index(ProductRepository $productRepository): Response
     {
-
-    $products = $entityManager->getRepository(Product::class)->findAll() ;
-
+        $products = $productRepository->findAll();
+        
+        // Serialize products to pass to React
+        $serializedProducts = [];
+        foreach ($products as $product) {
+            $serializedProducts[] = [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'description' => $product->getDescription(),
+                'price' => $product->getPrice(),
+                'image1' => $product->getImage1(),
+                // Add any other fields you need
+            ];
+        }
+        
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'products' => $serializedProducts
         ]);
     }
 
