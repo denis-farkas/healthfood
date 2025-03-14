@@ -25,10 +25,10 @@ Encore
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   .splitEntryChunks()
 
-    .enableReactPreset()
+  .enableReactPreset()
 
-    // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-    .enableStimulusBridge('./assets/controllers.json')
+  // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+  .enableStimulusBridge("./assets/controllers.json")
 
   // will require an extra script tag for runtime.js
   // but, you probably want this, unless you're building a single-page app
@@ -41,7 +41,7 @@ Encore
    * list of features, see:
    * https://symfony.com/doc/current/frontend.html#adding-more-features
    */
-  .cleanupOutputBeforeBuild()
+  .cleanupOutputBeforeBuild(["**/*", "!images/**"])
   .enableBuildNotifications()
   .enableSourceMaps(!Encore.isProduction())
   // enables hashed filenames (e.g. app.abc123.css)
