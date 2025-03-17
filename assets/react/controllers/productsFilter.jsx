@@ -92,7 +92,7 @@ const ProductsFilter = (props) => {
           <div className="container gallery">
             {filteredProducts.map((product) => (
               <div key={product.id} className="card mb-3">
-                <h3 className="card-header">{product.name}</h3>
+                <h3 className="card-head">{product.name}</h3>
                 <div className="card-body">
                   <img
                     className="img-product"
@@ -101,15 +101,16 @@ const ProductsFilter = (props) => {
                   />
                   <p className="card-title">{product.description}</p>
                 </div>
-                <div className="card-footer text-muted">
+                <div className="card-foot">
                   {product.price} euros
-                </div>
-                <a
+                  <a
                   href={`${props.productUrlPattern}${product.id}`}
-                  className="btn btn-secondary"
-                >
+                  className=" btn-gallery"
+                  >
                   Voir la fiche
-                </a>
+                  </a> 
+                </div>
+                
               </div>
             ))}
           </div>

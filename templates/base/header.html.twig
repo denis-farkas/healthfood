@@ -41,8 +41,20 @@
       </ul>
     </div>
     <div class = "icone"> 
-    <img src="{{ asset('build/images/bouton_profil.png' ) }}" alt = "profil" /> 
-    <img src="{{ asset('build/images/panier.png' ) }}" alt = "panier" />
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <img src="{{ asset('build/images/bouton_profil.png' ) }}" alt = "profil" /> 
+        </li>
+        <li class="nav-item">
+            {% set totalQuantity = cart_service.getTotalQuantity() %}
+            {% if totalQuantity > 0 %}
+                <a href="{{ path('cart') }}" class="cart">
+                  <img src="{{ asset('build/images/panier.png' ) }}" alt = "panier" />
+                    <span class="cart-count">{{ totalQuantity }}</span>
+                </a>
+            {% endif %}
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
